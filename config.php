@@ -1,3 +1,4 @@
+<?php
 function getIP() {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         return $_SERVER['HTTP_CLIENT_IP'];
@@ -22,4 +23,5 @@ function sendMessage($chat_id, $message) {
     curl_exec($ch);
     curl_close($ch);
 }
+?>
 
