@@ -1,4 +1,5 @@
 <?php
+require 'config.php';
 $token = '...'; //Insert your bot token here
 //Telegram IP range
 $telegram = false;
