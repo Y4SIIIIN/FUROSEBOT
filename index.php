@@ -20,24 +20,18 @@ if(!$telegram) {
     echo json_encode(array('status' => false), 128).PHP_EOL;
     die;
 }
+
+//Using PHP Object
+$update = json_decode(file_get_contents("php://input")); 
+$message = $update->message->text; 
+$chat_id = $update->message->chat->id; 
+$response = "GitHub:\nhttps://github.com/Y4SIIIIN";
+/*
 $update = json_decode(file_get_contents("php://input"), TRUE);
 $message = $update['message']['text'];
 $chat_id = $update['message']['chat']['id'];
-$response = "GitHub:\nhttps://github.com/Y4SIIIIN";
+$response = "GitHub:\nhttps://github.com/Y4SIIIIN/FUROSEBOT";
+*/
+
 sendMessage($chat_id, $response);
-function sendMessage($chat_id, $message) {
-    global $token;
-    $url = "https://api.telegram.org/bot$token/sendMessage";
-    $post_fields = array(
-        'chat_id' => $chat_id,
-        'text' => $message
-    );
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type:multipart/form-data"));
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-    curl_exec($ch);
-    curl_close($ch);
-}
 ?>
