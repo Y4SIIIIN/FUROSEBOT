@@ -23,9 +23,12 @@ if(!$telegram) {
 }
 
 //Using PHP Object
-$update = json_decode(file_get_contents("php://input")); 
-$message = $update->message->text; 
-$chat_id = $update->message->chat->id; 
+$update = json_decode(file_get_contents('php://input'));
+$message = $update->message;
+// Extract Chat ID, message ID
+$chat_id = $message->chat->id;
+$message_id = $message->message_id;
+
 $response = "GitHub:\nhttps://github.com/Y4SIIIIN";
 /*
 $update = json_decode(file_get_contents("php://input"), TRUE);
